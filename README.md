@@ -27,7 +27,7 @@ There are existing packages that implement the same proposed functionality in bo
 
 |Existing Packages/Functions|
 |---------------------------|
-|[Sklearn's NearestNeighbors](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.kneighbors)|
-|[Scipy's Spatial Distance Functions](https://docs.scipy.org/doc/scipy/reference/spatial.distance.html)|
-|[R Distance Computations](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/dist.html)|
-|[R K Nearest Neighbours](https://cran.r-project.org/web/packages/FNN/index.html)||
+| [Sklearn's NearestNeighbors](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.kneighbors) |
+| [Scipy's Spatial Distance Functions](https://docs.scipy.org/doc/scipy/reference/spatial.distance.html) |
+| [R Distance Computations](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/dist.html) |
+| [R K Nearest Neighbours](https://cran.r-project.org/web/packages/FNN/index.html) |
