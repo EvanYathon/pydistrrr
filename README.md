@@ -13,7 +13,7 @@
 
 ## Functions
 
-|Function Name|Input|Output|Description|
+| Function Name | Input | Output | Description |
 |-------------|-----|------|-----------|
 |get_distance|3 parameters:  2 lists of numeric values, a string specifying type of distance metric | Single float| Given 2 observations each represented by a list of numeric values, compute and return the distance between the 2 points based on the specified distance metric (e.g. `metric="euclidean"`)|
 |get_all_distances |3 parameters:  a dataframe, a list of numeric values, a string specifying type of distance metric  | List of floats of length n| Given a dataframe and an observation represented by a single list of numeric values, compute and return the distances between the single observation and each observation in the dataframe based on the specified distance metric. Will output a list of distances (as numeric values) with size equal to the number of rows in the dataframe, `n`.|
