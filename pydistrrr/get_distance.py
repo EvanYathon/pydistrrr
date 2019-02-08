@@ -1,7 +1,7 @@
 #
-# Created on Fri Feb  8 10:07:35 2019
+# Created on Feb  8  2019
 #
-# @author: Carrie Cheung
+# @author: Mike Yuan
 #
 # Implementation of get_closest function in the pydistrrr package.
 
