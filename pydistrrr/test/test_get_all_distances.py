@@ -10,4 +10,90 @@ frame, calculating the specified distance/similarity metric for each row.
 """
 import pytest
 import pandas as pd
-from pydistrrr.get_closest import get_closest
+import sys
+from pydistrrr.get_all_distances import get_all_distances
+
+#initialize a sample dataframe and reference vector
+df = pd.DataFrame({"A" : [1,2,3], "B" : [8,2,4]})
+ref_vec = [-2,4]
+
+def test_pandas_loaded():
+    """
+    Test that pandas package is loaded
+    """
+    assert('pandas' in sys.modules)
+
+def test_output_length():
+    """
+    Test that the output vector length is the same as the
+    number of rows in the input dataframe
+    """
+    assert(len(get_all_distances(ref_vec, df)) == df.shape[0])
+
+def test_output_type():
+    """
+    Test that output is of type list
+    """
+    assert(type(get_all_distances(ref_vec, df)) == list)
+
+def test_euclidean():
+    """
+    Test that the euclidean output works correctly
+    """
+    assert(round(get_all_distances(ref_vec, df, dist = "euclidean"),2) == [5,4.47,5])
+
+def test_cosine():
+    """
+    Test that the euclidean output works correctly
+    """
+    assert(round(get_all_distances(ref_vec, df, dist = "cosine"),2) == [0.83,0.32,0.45])
+
+def test_manhattan():
+    """
+    Test that the euclidean output works correctly
+    """
+    assert(round(get_all_distances(ref_vec, df, dist = "manhattan"),2) == [7,6,5])
+
+def test_second_arg_df():
+    """
+    Test that if the second argument isn't a data frame, an exception should be thrown
+    """
+    try:
+        get_all_distances(ref_vec,[1,2,3])
+    except:
+        assert True
+    else:
+        assert False
+
+def test_second_arg_list():
+    """
+    Test that if the first argument isn't a list, an exception should be thrown
+    """
+    try:
+        get_all_distances(df, df)
+    except:
+        assert True
+    else:
+        assert False
+
+def test_point_correct_length():
+    """
+    Point vector should be length k, the number of columns of the input dataframe
+    """
+    try:
+        get_all_distances([1,2,3,4],df)
+    except:
+        assert True
+    else:
+        assert False
+
+def test_metric_input():
+    """
+    dist should be a string and one of 'cosine', 'euclidean' or 'manhattan'
+    """
+    try:
+        get_all_distances(ref_vec,df, type = "cityblock")
+    except:
+        assert True
+    else:
+        assert False

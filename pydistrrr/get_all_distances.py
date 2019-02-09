@@ -6,7 +6,7 @@ Created on 2019-02-08
 Implementation of get_all_distances function in the pydistrrr package.
 """
 
-def get_all_distances(data, ref_vec, dist_type = "euclidean"):
+def get_all_distances(point, data, dist = "euclidean"):
     """
     Return distance/similarity metric for each row in a dataframe
 
@@ -17,10 +17,10 @@ def get_all_distances(data, ref_vec, dist_type = "euclidean"):
     data : pandas dataframe
     dataframe of size n by k to compare to ref_vec
 
-    ref_vec: list
+    point: list
     list of length k to compare to the data frame
 
-    dist_type: string
+    dist: string
     string indicating type of distance metric
 
     Returns
