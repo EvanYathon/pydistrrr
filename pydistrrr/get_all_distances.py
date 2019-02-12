@@ -49,11 +49,20 @@ def get_all_distances(point, data, dist = "euclidean"):
 
             for i in range(0,len(point1)):
                 dp += point1[i]*point2[i]
+                amag += point1[i]**2
+                bmag += point2[i]**2
 
-            return
+            amag = amag**(1/2)
+            bmag = bmag**(1/2)
+
+            return dp/(amag*bmag)
 
         elif metric == "man":
-            return
+            ph = 0
+            for i in range(0,len(point1)):
+                ph += abs(point1[i]-point2[i])
+
+            return ph
 
     distances = [] #empty vector to be filled with distances
 
