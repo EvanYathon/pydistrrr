@@ -23,7 +23,7 @@ bad_point = ["2", "hello"]
 # helper function
 
 
-def get_manhhantan_dist(point1, point2):
+def get_manhanttan_dist(point1, point2):
     """
     Helper function to verfiy manhhantan distance
     """
@@ -40,7 +40,7 @@ def test_correct_eclidean():
     """
 
     assert get_distance(
-        point1, point2, metric="eclidean") == distance.euclidean(point1, point2)
+        point1, point2, metric="euclidean") == distance.euclidean(point1, point2)
 
 
 def test_correct_cosine():
@@ -49,16 +49,16 @@ def test_correct_cosine():
     """
 
     assert get_distance(
-        point1, point2, metric="eclidean") == distance.cosine(point1, point2)
+        point1, point2, metric="cosine") == distance.cosine(point1, point2)
 
 
-def test_correct_manhhantan():
+def test_correct_manhanttan():
     """
     Test if the correct distance is return based on the metric
     """
 
     assert get_distance(
-        point1, point2, metric="eclidean") == get_manhhantan_dist(point1, point2)
+        point1, point2, metric="manhanttan") == get_manhanttan_dist(point1, point2)
 
 
 def test_null_list_input():
