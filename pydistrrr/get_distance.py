@@ -75,4 +75,10 @@ def get_distance(point1, point2, metric="euclidean"):
         distance calculated based on the metric.
     """
 
+    if(len(point1) == 0 or len(point2) == 0):
+        raise ValueError("point cannot be empty list")
+
+    if(len(point1) != len(point2)):
+        raise AssertionError("")
+
     return DISTANCE_FUNCTIONS[metric](point1, point2)

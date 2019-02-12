@@ -65,7 +65,7 @@ def test_null_list_input():
     """
     Test if the Value error will be raised if one of the parameter is empty list
     """
-    with pytest.raises(ValueError, match=r'.* empty list .*'):
+    with pytest.raises(ValueError, match=r'.*empty list.*'):
         get_distance(point1, empty_point)
         get_distance(empty_point, point1)
 
