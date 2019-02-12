@@ -29,5 +29,10 @@ def get_all_distances(point, data, dist = "euclidean"):
     numeric vector of length n containing distances for each row of data
     """
 
+    n = data.shape[0]
+    k = data.shape[1]
+    
+
+
     distances = []
     return distances
