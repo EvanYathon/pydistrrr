@@ -31,7 +31,34 @@ def get_all_distances(point, data, dist = "euclidean"):
 
     n = data.shape[0]
     k = data.shape[1]
-    
+
+    #define distance metric function
+    #placeholder, as the function will use get_distance
+    def get_distance(point1, point2, metric = "euclidean"):
+        if metric == "euclidean":
+            ph = 0
+            for i in range(0,len(point1)):
+                ph += (point1[i]-point2[i])**2
+
+            return ph**(1/2)
+
+        elif metric == "cosine":
+            dp = 0
+            amag = 0
+            bmag = 0
+
+            for i in range(0,len(point1)):
+                dp += point1[i]*point2[i]
+
+            return
+
+        elif metric == "man":
+            return
+
+    distances = [] #empty vector to be filled with distances
+
+    for obs in range(0,n):
+        distances.append()
 
 
     distances = []
