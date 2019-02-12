@@ -67,8 +67,6 @@ def get_all_distances(point, data, dist = "euclidean"):
     distances = [] #empty vector to be filled with distances
 
     for obs in range(0,n):
-        distances.append()
+        distances.append(get_distance(point, data.iloc[obs,], metric = dist))
 
-
-    distances = []
     return distances
