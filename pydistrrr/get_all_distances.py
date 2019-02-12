@@ -35,11 +35,28 @@ def get_all_distances(point, data, dist = "euclidean"):
     get_all_distances(point, df, dist = "euclidean")
     """
 
+    # raise error if dataframe isn't the correct type of object
+    if not isinstance(df, pd.DataFrame):
+        raise Exception("the data argument should be a pandas dataframe")
+
+    # raise error if first argument isn't a list
+    if not isinstance(point, list):
+        raise Exception("the point argument should be type list")
+
+    # number of observations in data frame
     n = data.shape[0]
     k = data.shape[1]
 
-    #define distance metric function
-    #placeholder, as the function will use get_distance
+    # raise error if point isn't length k
+    if not len(point) == k:
+        raise Exception("point vector length and number of columns in data should match")
+
+    # raise error if dist isn't correctly defined
+    if dist != "euclidean" or dist != "cosine" or dist != "manhattan":
+        raise Exception("dist should be one of 'euclidean','cosine' or 'manhattan'")
+
+    # define distance metric function
+    # placeholder, as the function will use get_distance
     def get_distance(point1, point2, metric = "euclidean"):
         if metric == "euclidean":
             ph = 0
@@ -70,7 +87,8 @@ def get_all_distances(point, data, dist = "euclidean"):
 
             return ph
 
-    distances = [] #empty vector to be filled with distances
+    # empty vector to be filled with distances
+    distances = []
 
     for obs in range(0,n):
         distances.append(get_distance(point, data.iloc[obs,], metric = dist))

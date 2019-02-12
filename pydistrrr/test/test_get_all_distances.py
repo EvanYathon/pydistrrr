@@ -51,7 +51,7 @@ def test_cosine():
     """
     output = get_all_distances(ref_vec, df, dist = "cosine")
     output_rounded = [round(dist,2) for dist in output]
-    
+
     assert(output_rounded == [0.83,0.32,0.45])
 
 def test_manhattan():
@@ -101,7 +101,7 @@ def test_metric_input():
     dist should be a string and one of 'cosine', 'euclidean' or 'manhattan'
     """
     try:
-        get_all_distances(ref_vec,df, type = "cityblock")
+        get_all_distances(ref_vec,df, dist = "cityblock")
     except:
         assert True
     else:
