@@ -44,13 +44,13 @@ def test_euclidean():
 
 def test_cosine():
     """
-    Test that the euclidean output works correctly
+    Test that the cosine output works correctly
     """
     assert(round(get_all_distances(ref_vec, df, dist = "cosine"),2) == [0.83,0.32,0.45])
 
 def test_manhattan():
     """
-    Test that the euclidean output works correctly
+    Test that the manhattan output works correctly
     """
     assert(round(get_all_distances(ref_vec, df, dist = "manhattan"),2) == [7,6,5])
 
