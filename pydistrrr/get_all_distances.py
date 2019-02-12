@@ -27,6 +27,12 @@ def get_all_distances(point, data, dist = "euclidean"):
     -------
     list
     numeric vector of length n containing distances for each row of data
+
+    Example
+    -------
+    df = pd.DataFrame({"A" : [1,2,3], "B" : [8,2,4]})
+    point = [-2,4]
+    get_all_distances(point, df, dist = "euclidean")
     """
 
     n = data.shape[0]
