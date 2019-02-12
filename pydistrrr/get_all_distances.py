@@ -48,11 +48,11 @@ def get_all_distances(point, data, dist = "euclidean"):
     k = data.shape[1]
 
     # raise error if point isn't length k
-    if not len(point) == k:
+    if len(point) != k:
         raise Exception("point vector length and number of columns in data should match")
 
     # raise error if dist isn't correctly defined
-    if not test in ["euclidean","cosine","manhattan"]:
+    if not dist in ["euclidean","cosine","manhattan"]:
         raise Exception("dist should be one of 'euclidean','cosine' or 'manhattan'")
 
     # define distance metric function
