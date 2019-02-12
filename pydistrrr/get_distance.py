@@ -79,6 +79,6 @@ def get_distance(point1, point2, metric="euclidean"):
         raise ValueError("point cannot be empty list")
 
     if(len(point1) != len(point2)):
-        raise AssertionError("")
+        raise AssertionError("points have unequal length")
 
     return DISTANCE_FUNCTIONS[metric](point1, point2)
