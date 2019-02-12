@@ -8,7 +8,7 @@ Implementation of get_all_distances function in the pydistrrr package.
 
 def get_all_distances(point, data, dist = "euclidean"):
     """
-    Return distance/similarity metric for each row in a dataframe
+    Return distance metric for each row in a dataframe as compared to an input list
 
     Compares an input reference vector to all rows of an input data frame, calculating the specified distance/similarity metric for each row.
 
@@ -57,7 +57,7 @@ def get_all_distances(point, data, dist = "euclidean"):
 
             return dp/(amag*bmag)
 
-        elif metric == "man":
+        elif metric == "manhattan":
             ph = 0
             for i in range(0,len(point1)):
                 ph += abs(point1[i]-point2[i])
