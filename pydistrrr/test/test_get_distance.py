@@ -49,7 +49,7 @@ def test_correct_cosine():
     """
 
     assert get_distance(
-        point1, point2, metric="cosine") == distance.cosine(point1, point2)
+        point1, point2, metric="cosine") == (1 - distance.cosine(point1, point2))
 
 
 def test_correct_manhanttan():

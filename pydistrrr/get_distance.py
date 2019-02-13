@@ -5,8 +5,11 @@
 #
 # Implementation of get_closest function in the pydistrrr package.
 
+from scipy.spatial import distance
 
 # helper functions for the distances
+
+
 def get_euclidean(point1, point2):
     ph = 0
     for i in range(0, len(point1)):
@@ -29,6 +32,7 @@ def get_cosine(point1, point2):
     bmag = bmag**(1 / 2)
 
     return dp / (amag * bmag)
+    # return distance.cosine(point1, point2)
 
 
 def get_manhattan(point1, point2):
@@ -80,5 +84,8 @@ def get_distance(point1, point2, metric="euclidean"):
 
     if(len(point1) != len(point2)):
         raise AssertionError("points have unequal length")
+
+    if not metric in DISTANCE_FUNCTIONS:
+        raise(KeyError("emtric has to be one of 'euclidean','cosine', or 'manhanttan'"))
 
     return DISTANCE_FUNCTIONS[metric](point1, point2)
