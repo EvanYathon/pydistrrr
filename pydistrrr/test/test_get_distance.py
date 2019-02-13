@@ -23,7 +23,7 @@ bad_point = ["2", "hello"]
 # helper function
 
 
-def get_manhhantan_dist(point1, point2):
+def get_manhattan_dist(point1, point2):
     """
     Helper function to verfiy manhhantan distance
     """
@@ -40,7 +40,7 @@ def test_correct_eclidean():
     """
 
     assert get_distance(
-        point1, point2, metric="eclidean") == distance.euclidean(point1, point2)
+        point1, point2, metric="euclidean") == distance.euclidean(point1, point2)
 
 
 def test_correct_cosine():
@@ -49,23 +49,23 @@ def test_correct_cosine():
     """
 
     assert get_distance(
-        point1, point2, metric="eclidean") == distance.cosine(point1, point2)
+        point1, point2, metric="cosine") == (1 - distance.cosine(point1, point2))
 
 
-def test_correct_manhhantan():
+def test_correct_manhattan():
     """
     Test if the correct distance is return based on the metric
     """
 
     assert get_distance(
-        point1, point2, metric="eclidean") == get_manhhantan_dist(point1, point2)
+        point1, point2, metric="manhattan") == get_manhattan_dist(point1, point2)
 
 
 def test_null_list_input():
     """
     Test if the Value error will be raised if one of the parameter is empty list
     """
-    with pytest.raises(ValueError, match=r'.* empty list .*'):
+    with pytest.raises(ValueError, match=r'.*empty list.*'):
         get_distance(point1, empty_point)
         get_distance(empty_point, point1)
 
@@ -74,6 +74,6 @@ def test_unequal_length_in_list():
     """
     Test if assertion error will be thrown if the lists have different length
     """
-    with pytest.raises(AssertionError, match=r'.* empty list .*'):
+    with pytest.raises(AssertionError, match=r'.*unequal length.*'):
         get_distance(point1, point3)
         get_distance(point3, point1)
