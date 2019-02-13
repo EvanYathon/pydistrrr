@@ -6,7 +6,6 @@
 #
 
 import pytest
-import pandas as pd
 import numpy as np
 from scipy.spatial import distance
 from pydistrrr.get_distance import get_distance
@@ -77,3 +76,12 @@ def test_unequal_length_in_list():
     with pytest.raises(AssertionError, match=r'.*unequal length.*'):
         get_distance(point1, point3)
         get_distance(point3, point1)
+
+
+def test_non_numeric_element_input():
+    """
+    Test if the Value error will be raised if one of the parameter is empty list
+    """
+    with pytest.raises(ValueError, match=r'.*non-numeric element.*'):
+        get_distance(point1, bad_point)
+        get_distance(bad_point, point1)
