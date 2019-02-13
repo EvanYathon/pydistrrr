@@ -15,10 +15,10 @@ def get_all_distances(point, data, dist = "euclidean"):
     Parameters
     ----------
     data : pandas dataframe
-    dataframe of size n by k to compare to ref_vec
+    dataframe of size n by k to compare to point
 
     point: list
-    list of length k to compare to the data frame
+    list of length k to compare to data
 
     dist: string
     string indicating type of distance metric
@@ -33,6 +33,7 @@ def get_all_distances(point, data, dist = "euclidean"):
     df = pd.DataFrame({"A" : [1,2,3], "B" : [8,2,4]})
     point = [-2,4]
     get_all_distances(point, df, dist = "euclidean")
+    >>> [5, 4.47, 5]
     """
     # import pandas and get_all_distances
     import pandas as pd
