@@ -82,6 +82,35 @@ def get_manhattan(point1, point2):
     return ph
 
 
+def contain_only_numeric_elements(point):
+    """
+    Return boolean based on whether the list contain any non_numeric contain
+    only_numeric_elements
+
+    Parameters
+    ----------
+    point: list
+        Values defining a single observation
+        to compute distances for
+
+    Returns
+    --------
+    result: Boolean
+
+    Example
+    -------
+    contain_only_numeric_elements([1,1.0,2.4]) return True
+
+    contain_only_numeric_elements(["1", "two", "monday"]) return False
+    """
+    numeric_types = [int, float, complex]
+
+    for p in point:
+        if(type(p) not in numeric_types):
+            return False
+    return True
+
+
 DISTANCE_FUNCTIONS = {
     "euclidean": get_euclidean,
     "cosine": get_cosine,
@@ -119,13 +148,21 @@ def get_distance(point1, point2, metric="euclidean"):
         distance calculated based on the metric.
     """
 
+    # check for empty list
     if(len(point1) == 0 or len(point2) == 0):
         raise ValueError("point cannot be empty list")
 
+    # check for unequal length
     if(len(point1) != len(point2)):
         raise AssertionError("points cannot have unequal length")
 
+    # check for incorrect metric input
     if not metric in DISTANCE_FUNCTIONS:
         raise(KeyError("emtric has to be one of 'euclidean','cosine', or 'manhattan'"))
+
+    # check for non-numeric element in points
+    if((not contain_only_numeric_elements(point1)) or
+       (not contain_only_numeric_elements(point2))):
+        raise ValueError("Points should not contain non-numeric element")
 
     return DISTANCE_FUNCTIONS[metric](point1, point2)
