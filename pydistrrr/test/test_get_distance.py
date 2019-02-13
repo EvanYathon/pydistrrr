@@ -23,7 +23,7 @@ bad_point = ["2", "hello"]
 # helper function
 
 
-def get_manhanttan_dist(point1, point2):
+def get_manhattan_dist(point1, point2):
     """
     Helper function to verfiy manhhantan distance
     """
@@ -52,13 +52,13 @@ def test_correct_cosine():
         point1, point2, metric="cosine") == (1 - distance.cosine(point1, point2))
 
 
-def test_correct_manhanttan():
+def test_correct_manhattan():
     """
     Test if the correct distance is return based on the metric
     """
 
     assert get_distance(
-        point1, point2, metric="manhanttan") == get_manhanttan_dist(point1, point2)
+        point1, point2, metric="manhattan") == get_manhattan_dist(point1, point2)
 
 
 def test_null_list_input():

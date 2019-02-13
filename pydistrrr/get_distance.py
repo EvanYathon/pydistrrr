@@ -45,7 +45,7 @@ def get_manhattan(point1, point2):
 DISTANCE_FUNCTIONS = {
     "euclidean": get_euclidean,
     "cosine": get_cosine,
-    "manhanttan": get_manhattan
+    "manhattan": get_manhattan
 
 }
 
@@ -83,9 +83,9 @@ def get_distance(point1, point2, metric="euclidean"):
         raise ValueError("point cannot be empty list")
 
     if(len(point1) != len(point2)):
-        raise AssertionError("points have unequal length")
+        raise AssertionError("points cannot have unequal length")
 
     if not metric in DISTANCE_FUNCTIONS:
-        raise(KeyError("emtric has to be one of 'euclidean','cosine', or 'manhanttan'"))
+        raise(KeyError("emtric has to be one of 'euclidean','cosine', or 'manhattan'"))
 
     return DISTANCE_FUNCTIONS[metric](point1, point2)
