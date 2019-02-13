@@ -38,9 +38,9 @@ def get_all_distances(point, data, dist = "euclidean"):
     get_all_distances(point, df, dist = "euclidean")
     >>> [5, 4.47, 5]
     """
-    
+
     # raise error if dataframe isn't the correct type of object
-    if not isinstance(data, pandas.DataFrame):
+    if not isinstance(data, pd.DataFrame):
         raise Exception("the data argument should be a pandas dataframe")
 
     # raise error if first argument isn't a list
