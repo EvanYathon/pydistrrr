@@ -5,6 +5,9 @@ Created on 2019-02-08
 
 Implementation of get_all_distances function in the pydistrrr package.
 """
+# import pandas and get_all_distances
+from pydistrrr.get_distance import get_distance
+import pandas as pd
 
 def get_all_distances(point, data, dist = "euclidean"):
     """
@@ -35,12 +38,9 @@ def get_all_distances(point, data, dist = "euclidean"):
     get_all_distances(point, df, dist = "euclidean")
     >>> [5, 4.47, 5]
     """
-    # import pandas and get_all_distances
-    import pandas as pd
-    from pydistrrr.get_distance import get_distance
-
+    
     # raise error if dataframe isn't the correct type of object
-    if not isinstance(data, pd.DataFrame):
+    if not isinstance(data, pandas.DataFrame):
         raise Exception("the data argument should be a pandas dataframe")
 
     # raise error if first argument isn't a list
