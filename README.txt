@@ -1,5 +1,5 @@
-DSCI 524 Milestone 1 README
-===========================
+Pydistrrr
+=========
 
 ============== =================
 Contributors   GitHub Handle
@@ -13,12 +13,18 @@ Shayne Andrews `shayne-andrews`_
 Project Summary
 ---------------
 
-``distrrr`` and ``pydistrrr`` are R and Python packages respectively
-that calculate distance metrics between vectors. Users can find closest
-distances based either on a threshold distance or specified number of
-outputs to find vectors that are similar to their input. These functions
-are designed to be similar to `Scikit Learn’s Nearest Neighbors`_
-functionality.
+``pydistrrr`` is a Python package that calculates distances between
+numeric-based data points or observations. The currently supported
+distance metrics are:
+
+-  `Euclidean Distance`_
+-  `Manhattan Distance`_
+-  `Cosine Similarity`_
+
+In addition to computing distances, ``pydistrrr`` can identify the
+closest data points to a given point based on a distance threshold, or
+based on a user-specified number of points. These functions are designed
+to be similar to `Scikit Learn’s Nearest Neighbors`_ functionality.
 
 Functions
 ---------
@@ -44,12 +50,12 @@ Functions
 +-------------------------+---------+-----------+---------------------+
 | get_all_distances       | 3       | List of   | Given a dataframe   |
 |                         | paramet | floats of | and an observation  |
-|                         | ers:    | length n  | represented by a    |
-|                         | a       |           | single list of      |
-|                         | datafra |           | numeric values,     |
-|                         | me,     |           | compute and return  |
-|                         | a list  |           | the distances       |
-|                         | of      |           | between the single  |
+|                         | ers:    | length    | represented by a    |
+|                         | a       | ``n``     | list of numeric     |
+|                         | datafra |           | values, compute and |
+|                         | me,     |           | return the          |
+|                         | a list  |           | distances between   |
+|                         | of      |           | the single          |
 |                         | numeric |           | observation and     |
 |                         | values, |           | each observation in |
 |                         | a       |           | the dataframe based |
@@ -63,7 +69,7 @@ Functions
 |                         |         |           | in the dataframe,   |
 |                         |         |           | ``n``.              |
 +-------------------------+---------+-----------+---------------------+
-| filter_distances        | 3       | List of   | Similiar to         |
+| filter_distances        | 4       | List of   | Similiar to         |
 |                         | paramet | int (row  | ``get_all_distances |
 |                         | ers:    | indices)  | ``                  |
 |                         | a       |           | except indices of   |
@@ -84,24 +90,7 @@ Functions
 |                         | thresho |           |                     |
 |                         | ld      |           |                     |
 |                         | distanc |           |                     |
-|                         | e       |           |                     |
-+-------------------------+---------+-----------+---------------------+
-| get_closest             | 4       | List of   | Similiar to         |
-|                         | paramet | int (row  | ``get_all_distances |
-|                         | ers:    | indices)  | ``                  |
-|                         | a       | of length | except indices of   |
-|                         | datafra | k         | the top ``k``       |
-|                         | me,     |           | rows/observations   |
-|                         | a list  |           | with the smallest   |
-|                         | of      |           | distances are       |
-|                         | numeric |           | returned.           |
-|                         | values  |           |                     |
-|                         | k, int  |           |                     |
-|                         | for     |           |                     |
-|                         | number  |           |                     |
-|                         | of      |           |                     |
-|                         | neighbo |           |                     |
-|                         | urs,    |           |                     |
+|                         | e,      |           |                     |
 |                         | a       |           |                     |
 |                         | string  |           |                     |
 |                         | specify |           |                     |
@@ -111,22 +100,51 @@ Functions
 |                         | e       |           |                     |
 |                         | metric  |           |                     |
 +-------------------------+---------+-----------+---------------------+
+| get_closest             | 4       | List of   | Similiar to         |
+|                         | paramet | int (row  | ``get_all_distances |
+|                         | ers:    | indices)  | ``                  |
+|                         | a       | of length | except indices of   |
+|                         | datafra | ``k``     | the top ``k``       |
+|                         | me      |           | rows/observations   |
+|                         | of data |           | with the smallest   |
+|                         | points, |           | distances are       |
+|                         | a list  |           | returned. In the    |
+|                         | specify |           | case where there is |
+|                         | ing     |           | a tie in distances  |
+|                         | values  |           | between two or more |
+|                         | for a   |           | points, the point   |
+|                         | target  |           | with larger index   |
+|                         | point,  |           | in the dataframe    |
+|                         | an int  |           | will be selected.   |
+|                         | for     |           |                     |
+|                         | number  |           |                     |
+|                         | of      |           |                     |
+|                         | neighbo |           |                     |
+|                         | urs     |           |                     |
+|                         | k, a    |           |                     |
+|                         | string  |           |                     |
+|                         | specify |           |                     |
+|                         | ing     |           |                     |
+|                         | type of |           |                     |
+|                         | distanc |           |                     |
+|                         | e       |           |                     |
+|                         | metric  |           |                     |
+|                         | to      |           |                     |
+|                         | calcula |           |                     |
+|                         | te      |           |                     |
++-------------------------+---------+-----------+---------------------+
 
 Alignment with Python / R Ecosystems
 ------------------------------------
 
 There are existing packages that implement the same proposed
-functionality in both Python and R (listed below). Most of these
-packages provide functions to calculate different distance metrics
-between observations and/or also extend the functionality to compute the
-k closest neighbors (KNN) of a given point based on a selected distance
-metric.
+functionality in both Python and R (listed bel
 
-===============================
-Existing Packages/Functions
-===============================
-Sklearn's NearestNeighbors
-Scipy's Spatial Distance Functions
-R Distance Computations
-R K Nearest Neighbors
-===============================
+.. _carrieklc: https://github.com/carrieklc
+.. _EvanYathon: https://github.com/EvanYathon
+.. _mikeymice: https://github.com/mikeymice
+.. _shayne-andrews: https://github.com/shayne-andrews
+.. _Euclidean Distance: https://en.wikipedia.org/wiki/Euclidean_distance
+.. _Manhattan Distance: https://en.wikipedia.org/wiki/Taxicab_geometry
+.. _Cosine Similarity: https://en.wikipedia.org/wiki/Cosine_similarity
+.. _Scikit Learn’s Nearest Neighbors: https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.kneighbors
