@@ -39,3 +39,16 @@ In our package, we will be implementing the distance metric calculations manuall
 | [Scipy's Spatial Distance Functions](https://docs.scipy.org/doc/scipy/reference/spatial.distance.html) |
 | [R Distance Computations](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/dist.html) |
 | [R K Nearest Neighbours](https://cran.r-project.org/web/packages/FNN/index.html) |
+
+## Installation and Usage
+To install the package, simply run the below in your terminal:
+
+ `pip install git+https://github.com/UBC-MDS/pydistrrr.git`
+
+Then simply import `pydistrrr` in your own development.
+```
+# Example Usage
+>>> from pydistrrr import *
+>>> get_distance([1,2],[2,1])
+1.4142135623730951
+```
