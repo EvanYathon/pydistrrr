@@ -40,19 +40,28 @@ def test_euclidean():
     """
     Test that the euclidean output works correctly
     """
-    assert(round(get_all_distances(ref_vec, df, dist = "euclidean"),2) == [5,4.47,5])
+    output = get_all_distances(ref_vec, df, dist = "euclidean")
+    output_rounded = [round(dist,2) for dist in output]
+
+    assert(output_rounded == [5,4.47,5])
 
 def test_cosine():
     """
-    Test that the euclidean output works correctly
+    Test that the cosine output works correctly
     """
-    assert(round(get_all_distances(ref_vec, df, dist = "cosine"),2) == [0.83,0.32,0.45])
+    output = get_all_distances(ref_vec, df, dist = "cosine")
+    output_rounded = [round(dist,2) for dist in output]
+
+    assert(output_rounded == [0.83,0.32,0.45])
 
 def test_manhattan():
     """
-    Test that the euclidean output works correctly
+    Test that the manhattan output works correctly
     """
-    assert(round(get_all_distances(ref_vec, df, dist = "manhattan"),2) == [7,6,5])
+    output = get_all_distances(ref_vec, df, dist = "manhattan")
+    output_rounded = [round(dist,2) for dist in output]
+
+    assert(output_rounded == [7,6,5])
 
 def test_second_arg_df():
     """
@@ -92,7 +101,7 @@ def test_metric_input():
     dist should be a string and one of 'cosine', 'euclidean' or 'manhattan'
     """
     try:
-        get_all_distances(ref_vec,df, type = "cityblock")
+        get_all_distances(ref_vec,df, dist = "cityblock")
     except:
         assert True
     else:

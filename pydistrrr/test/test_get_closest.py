@@ -11,6 +11,7 @@ are closest to a given observation based on a specified distance metric.
 """
 import pytest
 import pandas as pd
+import numpy as np
 from pydistrrr.get_closest import get_closest
 
 # Sample input
@@ -39,11 +40,11 @@ def test_output_size():
 
 def test_output_ints():
     """
-    Test that output contains ints only
+    Test that output contains ints only (also can be numpy ints)
     """
     output = get_closest(point=x, data=df, top_k=k)
 
-    assert(all(isinstance(x, int) for x in output))
+    assert(all((isinstance(x, int)|isinstance(x,np.int64)) for x in output))
 
 
 def test_output_positive():
@@ -86,6 +87,28 @@ def test_input_point_list():
     """
     try:
         get_closest(point=1, data=df, top_k=k)
+    except:
+        assert True
+    else:
+        assert False
+
+def test_input_dist_string():
+    """
+    Test for error if dist is not a string
+    """
+    try:
+        get_closest(point=1, data=df, top_k=k, dist=2)
+    except:
+        assert True
+    else:
+        assert False
+
+def test_input_dist_supported():
+    """
+    Test for error if dist is not a supported distance metric
+    """
+    try:
+        get_closest(point=1, data=df, top_k=k, dist="mahalanobis")
     except:
         assert True
     else:
