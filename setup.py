@@ -5,8 +5,5 @@ setup(name='pydistrrr',
       description='Distance Metrics',
       author='Shayne Andrews, Carrie Cheung, Evan Yathon, Mike Yuan',
       url='https://github.com/UBC-MDS/pydistrrr',
-      install_requires=[
-      'pandas',
-      'numpy'],
-      packages=setuptools.find_packages()
+      packages=['pydistrrr']
      )
