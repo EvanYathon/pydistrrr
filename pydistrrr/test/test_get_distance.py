@@ -85,3 +85,11 @@ def test_non_numeric_element_input():
     with pytest.raises(ValueError, match=r'.*non-numeric element.*'):
         get_distance(point1, bad_point)
         get_distance(bad_point, point1)
+
+
+def test_non_numeric_element_output():
+    """
+    Test if the Value error will be raised if one of the parameter is empty list
+    """
+    with pytest.raises(ValueError, match=r'.*non-numeric value.*'):
+        get_distance(point1, point2, testing='output')
