@@ -7,5 +7,6 @@ setup(name='pydistrrr',
       url='https://github.com/UBC-MDS/pydistrrr',
       install_requires=[
       'pandas',
-      'numpy']
+      'numpy'],
+      packages=setuptools.find_packages()
      )
