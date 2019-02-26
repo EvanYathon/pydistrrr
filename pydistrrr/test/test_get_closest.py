@@ -94,10 +94,10 @@ def test_input_point_list():
 
 def test_input_dist_string():
     """
-    Test for error if dist is not a string
+    Test for error if metric is not a string
     """
     try:
-        get_closest(point=1, data=df, top_k=k, dist=2)
+        get_closest(point=1, data=df, top_k=k, metric=2)
     except:
         assert True
     else:
@@ -105,10 +105,10 @@ def test_input_dist_string():
 
 def test_input_dist_supported():
     """
-    Test for error if dist is not a supported distance metric
+    Test for error if metric is not a supported distance metric
     """
     try:
-        get_closest(point=1, data=df, top_k=k, dist="mahalanobis")
+        get_closest(point=1, data=df, top_k=k, metric="mahalanobis")
     except:
         assert True
     else:
