@@ -6,7 +6,7 @@ Created on February 8, 2019
 This script tests the filter_distances function of the pydistrrr package.
 
 The filter_distances function returns indices of rows in a dataframe that are
-within a given threshold distance from a givenobservation based on a specified
+within a given threshold distance from a given observation based on a specified
 distance metric..
 
 """
