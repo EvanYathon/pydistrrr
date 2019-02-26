@@ -12,6 +12,7 @@ are closest to a given observation (point) based on a specified distance metric.
 # Import dependencies
 import pandas as pd
 import numpy as np
+import warnings
 from pydistrrr.get_all_distances import get_all_distances
 
 def get_closest(point, data, top_k, metric="euclidean"):
@@ -50,7 +51,7 @@ def get_closest(point, data, top_k, metric="euclidean"):
     if not isinstance(data, pd.DataFrame):
         raise Exception("The data argument should be a pandas dataframe")
     
-    if not isinstance(dist, str):
+    if not isinstance(metric, str):
         raise Exception("The 'metric' argument should be a string")
     
     if top_k < 0 or not isinstance(top_k, int):
@@ -65,6 +66,9 @@ def get_closest(point, data, top_k, metric="euclidean"):
     supported_dist = ["euclidean", "cosine", "manhattan"]
     if metric not in supported_dist:
         raise Exception("The 'metric' argument is not a supported distance metric")
+    
+    if top_k > len(data):
+        warnings.warn("Warning: Note that since top_k is larger than the number of points in the dataframe, fewer than top_k indices will be returned.")
     
     # Call helper function to compute distances 
     distances = get_all_distances(point, data, metric)
