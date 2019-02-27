@@ -40,15 +40,22 @@ In our package, we will be implementing the distance metric calculations manuall
 | [R Distance Computations](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/dist.html) |
 | [R K Nearest Neighbours](https://cran.r-project.org/web/packages/FNN/index.html) |
 
-## Installation and Usage
+## Installation
 To install the package, simply run the below in your terminal:
 
  `pip install git+https://github.com/UBC-MDS/pydistrrr.git`
 
-Then simply import `pydistrrr` in your own development.
+Then simply import `pydistrrr` in your own development. For example:
 ```
-# Example Usage
 >>> from pydistrrr import *
 >>> get_distance([1,2],[2,1])
 1.4142135623730951
 ```
+
+## Example Usages
+|Function Name|Example Usage(s)|
+|--------|-------|
+|get_distance|<code>get_distance([1,2], [2,1], "manhattan")</code>|
+|get_all_distances|<code>x = [-2,4]<br>df = pd.DataFrame({"A" : [1,2,3], "B" : [8,2,4]})<br>get_all_distances(x, df, "cosine")</code>|
+|filter_distances|<code>x = [1, 1]<br>df = pd.DataFrame([[1, 1], [1, 2], [1, 3]])<br>filter_distances(x, df, threshold=0.9, dist="euclidean")</code>|
+|get_closest|<code>x = [1, 1] <br> df = pd.DataFrame([[1, 1], [1, 2], [1, 3]]) <br> get_closest(x, df, top_k=2, "manhattan")</code>|

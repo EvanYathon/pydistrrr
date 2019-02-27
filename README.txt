@@ -39,34 +39,33 @@ Functions
                                                         of distance metric                                 specified distance metric (e.g.
                                                                                                            `metric="euclidean"`)
 
-  get\_all\_distances                                   3 parameters: a         List of floats of length   Given a dataframe and an observation
-                                                        dataframe, a list of    `n`                        represented by a list of numeric values,
-                                                        numeric values, a                                  compute and return the distances between the
-                                                        string specifying type                             single observation and each observation in the
-                                                        of distance metric                                 dataframe based on the specified distance
+  get\_all\_distances                                   3 parameters: a list of List of floats of length   Given a dataframe and an observation
+                                                        numeric values, a       `n`                        represented by a list of numeric values,
+                                                        dataframe, a string                                compute and return the distances between the
+                                                        specifying type of                                 single observation and each observation in the
+                                                        distance metric                                    dataframe based on the specified distance
                                                                                                            metric. Will output a list of distances (as
                                                                                                            numeric values) with size equal to the number
                                                                                                            of rows in the dataframe, `n`.
 
-  filter\_distances                                     4 parameters: a         List of int (row indices)  Similiar to `get_all_distances` except indices
-                                                        dataframe, a list of                               of rows/observations with distances less than
-                                                        numeric values, a                                  the threshold distance will be returned.
-                                                        numeric (float or int)                             
-                                                        value representing a                               
+  filter\_distances                                     4 parameters: a list of List of int (row indices)  Similiar to `get_all_distances` except indices
+                                                        numeric values, a                                  of rows/observations with distances less than
+                                                        dataframe, a numeric                               the threshold distance will be returned.
+                                                        (float or int) value                               
+                                                        representing a                                     
                                                         threshold distance, a                              
                                                         string specifying type                             
                                                         of distance metric                                 
 
-  get\_closest                                          4 parameters: a         List of int (row indices)  Similiar to `get_all_distances` except indices
-                                                        dataframe of data       of length `k`              of the top `k` rows/observations with the
-                                                        points, a list                                     smallest distances are returned. In the case
-                                                        specifying values for a                            where there is a tie in distances between two
-                                                        target point, an int                               or more points, the point with larger index in
-                                                        for number of                                      the dataframe will be selected.
-                                                        neighbours k, a string                             
-                                                        specifying type of                                 
-                                                        distance metric to                                 
-                                                        calculate                                          
+  get\_closest                                          4 parameters: a list    List of int (row indices)  Similiar to `get_all_distances` except indices
+                                                        specifying values for a of length `k`              of the top `k` rows/observations with the
+                                                        target point, a                                    smallest distances are returned. In the case
+                                                        dataframe of data                                  where there is a tie in distances between two
+                                                        points, an int for                                 or more points, the point with larger index in
+                                                        number of neighbours k,                            the dataframe will be selected.
+                                                        a string specifying                                
+                                                        type of distance metric                            
+                                                        to calculate                                       
   -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Alignment with Python / R Ecosystems
@@ -89,16 +88,40 @@ manually rather than simply creating wrappers around existing functions.
   [R Distance Computations](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/dist.html)
   [R K Nearest Neighbours](https://cran.r-project.org/web/packages/FNN/index.html)
 
-Installation and Usage
-----------------------
+Installation
+------------
 
 To install the package, simply run the below in your terminal:
 
 `pip install git+https://github.com/UBC-MDS/pydistrrr.git`
 
-Then simply import `pydistrrr` in your own development.
+Then simply import `pydistrrr` in your own development. For example:
 
-    # Example Usage
     >>> from pydistrrr import *
     >>> get_distance([1,2],[2,1])
     1.4142135623730951
+
+Example Usages
+--------------
+
+  -----------------------------------------------------------------------------------
+  Function Name                               Example Usage(s)
+  ------------------------------------------- ---------------------------------------
+  get\_distance                               <code>get\_distance(\[1,2\], \[2,1\],
+                                              "manhattan")</code>
+
+  get\_all\_distances                         <code>x = \[-2,4\]<br>df =
+                                              pd.DataFrame({"A" : \[1,2,3\], "B" :
+                                              \[8,2,4\]})<br>get\_all\_distances(x,
+                                              df, "cosine")</code>
+
+  filter\_distances                           <code>x = \[1, 1\]<br>df =
+                                              pd.DataFrame(\[\[1, 1\], \[1, 2\], \[1,
+                                              3\]\])<br>filter\_distances(x, df,
+                                              threshold=0.9, dist="euclidean")</code>
+
+  get\_closest                                <code>x = \[1, 1\] <br> df =
+                                              pd.DataFrame(\[\[1, 1\], \[1, 2\], \[1,
+                                              3\]\]) <br> get\_closest(x, df,
+                                              top\_k=2, "manhattan")</code>
+  -----------------------------------------------------------------------------------
