@@ -21,9 +21,9 @@ In addition to computing distances, `pydistrrr` can identify the closest data po
 | Function Name | Input | Output | Description |
 |-------------|-----|------|-----------|
 |get_distance|3 parameters:  2 lists of numeric values, a string specifying type of distance metric | Single float| Given 2 observations each represented by a list of numeric values, compute and return the distance between the 2 points based on the specified distance metric (e.g. `metric="euclidean"`)|
-|get_all_distances |3 parameters:  a dataframe, a list of numeric values, a string specifying type of distance metric  | List of floats of length `n`| Given a dataframe and an observation represented by a list of numeric values, compute and return the distances between the single observation and each observation in the dataframe based on the specified distance metric. Will output a list of distances (as numeric values) with size equal to the number of rows in the dataframe, `n`.|
-|filter_distances| 4 parameters: a dataframe, a list of numeric values, a numeric (float or int) value representing a threshold distance, a string specifying type of distance metric |List of int (row indices)| Similiar to `get_all_distances` except indices of rows/observations with distances less than the threshold distance will be returned.|
-|get_closest|4 parameters: a dataframe of data points, a list specifying values for a target point, an int for number of neighbours k, a string specifying type of distance metric to calculate |List of int (row indices) of length `k`| Similiar to `get_all_distances` except indices of the top `k` rows/observations with the smallest distances are returned. In the case where there is a tie in distances between two or more points, the point with larger index in the dataframe will be selected.|
+|get_all_distances |3 parameters:  a list of numeric values, a dataframe, a string specifying type of distance metric  | List of floats of length `n`| Given a dataframe and an observation represented by a list of numeric values, compute and return the distances between the single observation and each observation in the dataframe based on the specified distance metric. Will output a list of distances (as numeric values) with size equal to the number of rows in the dataframe, `n`.|
+|filter_distances| 4 parameters: a list of numeric values, a dataframe, a numeric (float or int) value representing a threshold distance, a string specifying type of distance metric |List of int (row indices)| Similiar to `get_all_distances` except indices of rows/observations with distances less than the threshold distance will be returned.|
+|get_closest|4 parameters: a list specifying values for a target point, a dataframe of data points, an int for number of neighbours k, a string specifying type of distance metric to calculate |List of int (row indices) of length `k`| Similiar to `get_all_distances` except indices of the top `k` rows/observations with the smallest distances are returned. In the case where there is a tie in distances between two or more points, the point with larger index in the dataframe will be selected.|
 
 
 ## Alignment with Python / R Ecosystems
@@ -40,15 +40,22 @@ In our package, we will be implementing the distance metric calculations manuall
 | [R Distance Computations](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/dist.html) |
 | [R K Nearest Neighbours](https://cran.r-project.org/web/packages/FNN/index.html) |
 
-## Installation and Usage
+## Installation
 To install the package, simply run the below in your terminal:
 
  `pip install git+https://github.com/UBC-MDS/pydistrrr.git`
 
-Then simply import `pydistrrr` in your own development.
+Then simply import `pydistrrr` in your own development. For example:
 ```
-# Example Usage
 >>> from pydistrrr import *
 >>> get_distance([1,2],[2,1])
 1.4142135623730951
 ```
+
+## Example Usages
+|Function Name|Example Usage(s)|
+|--------|-------|
+|get_distance|<code>get_distance([1,2], [2,1], "manhattan")</code>|
+|get_all_distances|<code>x = [-2,4]<br>df = pd.DataFrame({"A" : [1,2,3], "B" : [8,2,4]})<br>get_all_distances(x, df, "cosine")</code>|
+|filter_distances|<code>x = [1, 1]<br>df = pd.DataFrame([[1, 1], [1, 2], [1, 3]])<br>filter_distances(x, df, threshold=0.9, dist="euclidean")</code>|
+|get_closest|<code>x = [1, 1] <br> df = pd.DataFrame([[1, 1], [1, 2], [1, 3]]) <br> get_closest(x, df, top_k=2, "manhattan")</code>|
