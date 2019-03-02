@@ -80,7 +80,7 @@ def test_unequal_length_in_list():
 
 def test_non_numeric_element_input():
     """
-    Test if the Value error will be raised if one of the parameter is empty list
+    Test if the Value error will be raised if one of the parameter has non-numeric
     """
     with pytest.raises(ValueError, match=r'.*non-numeric element.*'):
         get_distance(point1, bad_point)
@@ -93,3 +93,11 @@ def test_non_numeric_element_output():
     """
     with pytest.raises(ValueError, match=r'.*non-numeric value.*'):
         get_distance(point1, point2, testing='output')
+
+
+def test_incorrect_metric():
+    """
+    Test if the metric provided is correct
+    """
+    with pytest.raises(KeyError, match=r'.*metric has to be one of'):
+        get_distance(point1, point2, metric="error test")
