@@ -8,6 +8,7 @@ Implementation of get_all_distances function in the pydistrrr package.
 # import pandas and get_all_distances
 from pydistrrr.get_distance import get_distance
 import pandas as pd
+import numpy as np
 
 def get_all_distances(point, data, metric = "euclidean"):
     """
@@ -18,7 +19,7 @@ def get_all_distances(point, data, metric = "euclidean"):
     Parameters
     ----------
     point: list
-    list of length k to compare to data
+    list of length k to compare to data, containing only int or float types
 
     data : pandas dataframe
     dataframe of size n by k to compare to point
@@ -29,7 +30,7 @@ def get_all_distances(point, data, metric = "euclidean"):
     Returns
     -------
     list
-    numeric vector of length n containing distances for each row of data
+    numeric list of length n containing distances for each row of data
 
     Example
     -------
@@ -46,6 +47,17 @@ def get_all_distances(point, data, metric = "euclidean"):
     # raise error if first argument isn't a list
     if not isinstance(point, list):
         raise Exception("the point argument should be type list")
+
+    # raise error if point isn't all numeric
+    for obs in point:
+        if not isinstance(obs, int) and not isinstance(obs, float):
+            raise Exception("point argument should be a list containing only type float or int")
+
+    #raise error if df isn't all numeric
+    for row in range(0,n):
+        for col in range(0,k):
+            if not isinstance(df.iloc[row,col],(int,np.integer)) and not isinstance(df.iloc[row,col],float):
+                raise Exception("data argument should be a pandas dataframe containing only floats or integers")
 
     # number of observations in data frame
     n = data.shape[0]

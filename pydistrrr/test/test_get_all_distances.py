@@ -106,3 +106,20 @@ def test_metric_input():
         assert True
     else:
         assert False
+
+def test_point_types():
+    try:
+        get_all_distances(["a","b","c"],df)
+    except:
+        assert True
+    else:
+        assert False
+
+def test_df_types():
+    df2 = pd.DataFrame({"A" : ["1","2","3"], "B" : [8,2,4]})
+    try:
+        get_all_distances(ref_vec,df2)
+    except:
+        assert True
+    else:
+        assert False
