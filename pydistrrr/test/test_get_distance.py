@@ -66,7 +66,7 @@ def test_null_list_input():
     """
     with pytest.raises(ValueError, match=r'.*empty list.*'):
         get_distance(point1, empty_point)
-        get_distance(empty_point, point1)
+        #get_distance(empty_point, point1)
 
 
 def test_unequal_length_in_list():
@@ -75,7 +75,7 @@ def test_unequal_length_in_list():
     """
     with pytest.raises(AssertionError, match=r'.*unequal length.*'):
         get_distance(point1, point3)
-        get_distance(point3, point1)
+        #get_distance(point3, point1)
 
 
 def test_non_numeric_element_input():
@@ -84,7 +84,7 @@ def test_non_numeric_element_input():
     """
     with pytest.raises(ValueError, match=r'.*non-numeric element.*'):
         get_distance(point1, bad_point)
-        get_distance(bad_point, point1)
+        #get_distance(bad_point, point1)
 
 
 def test_non_numeric_element_output():
