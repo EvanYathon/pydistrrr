@@ -27,6 +27,17 @@ similar to [Scikit Learn's Nearest
 Neighbors](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.kneighbors)
 functionality.
 
+Test Coverage
+-------------
+
+We used the Python framework
+[`pytest`](https://docs.pytest.org/en/latest/) and the plug-in
+[`pytest-cov`](https://pypi.org/project/pytest-cov/) to test and track
+test coverage for the `pydistrrr` package. The results of the coverage
+report can be seen below.
+
+![](reports/pydistrrr_test_coverage.png)
+
 Functions
 ---------
 
