@@ -9,7 +9,7 @@ Implementation of filter_distances function in the pydistrrr package.
 from pydistrrr.get_all_distances import get_all_distances
 import pandas as pd
 
-def filter_distances(point, data, threshold, dist="euclidean"):
+def filter_distances(point, data, threshold, metric="euclidean"):
 
     """
     Returns indices of rows in a dataframe that are
@@ -31,7 +31,7 @@ def filter_distances(point, data, threshold, dist="euclidean"):
         The maximum distance of observations to
         return indices for.
 
-    dist: string
+    metric: string
         Type of distance metric to use in distance
         calculations.
 
@@ -46,8 +46,8 @@ def filter_distances(point, data, threshold, dist="euclidean"):
     if not isinstance(data, pd.DataFrame):
         raise Exception("The data argument should be a pandas dataframe")
 
-    if not isinstance(dist, str):
-        raise Exception("The dist argument should be a string")
+    if not isinstance(metric, str):
+        raise Exception("The metric argument should be a string")
 
     if threshold < 0 or not isinstance(threshold, float):
         raise Exception("The threshold argument should be a non-negative float")
@@ -58,12 +58,12 @@ def filter_distances(point, data, threshold, dist="euclidean"):
     if not all((isinstance(x, int)|isinstance(x, float)) for x in point):
         raise Exception("The point argument should contain only numerics")
 
-    supported_dist = ["euclidean", "cosine", "manhattan"]
-    if dist not in supported_dist:
-        raise Exception("The dist argument is not a supported distance metric")
+    supported_metric = ["euclidean", "cosine", "manhattan"]
+    if metric not in supported_metric:
+        raise Exception("The metric argument is not a supported distance metric")
 
     # Call helper function to compute distances
-    distances = get_all_distances(point, data, dist)
+    distances = get_all_distances(point, data, metric)
 
     indices = []
     for i, d in enumerate(distances):

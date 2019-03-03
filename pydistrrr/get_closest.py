@@ -12,9 +12,10 @@ are closest to a given observation (point) based on a specified distance metric.
 # Import dependencies
 import pandas as pd
 import numpy as np
+import warnings
 from pydistrrr.get_all_distances import get_all_distances
 
-def get_closest(point, data, top_k, dist="euclidean"):
+def get_closest(point, data, top_k, metric="euclidean"):
     
     """
     Returns indices of the top k rows in a dataframe
@@ -36,7 +37,7 @@ def get_closest(point, data, top_k, dist="euclidean"):
         The number of closest observations to
         return indices for.
         
-    dist: string
+    metric: string
         Type of distance metric to use in distance
         calculations.
     
@@ -50,8 +51,8 @@ def get_closest(point, data, top_k, dist="euclidean"):
     if not isinstance(data, pd.DataFrame):
         raise Exception("The data argument should be a pandas dataframe")
     
-    if not isinstance(dist, str):
-        raise Exception("The dist argument should be a string")
+    if not isinstance(metric, str):
+        raise Exception("The 'metric' argument should be a string")
     
     if top_k < 0 or not isinstance(top_k, int):
         raise Exception("The top_k argument should be a non-negative integer")
@@ -63,11 +64,14 @@ def get_closest(point, data, top_k, dist="euclidean"):
         raise Exception("The point argument should contain only numerics")
         
     supported_dist = ["euclidean", "cosine", "manhattan"]
-    if dist not in supported_dist:
-        raise Exception("The dist argument is not a supported distance metric")
+    if metric not in supported_dist:
+        raise Exception("The 'metric' argument is not a supported distance metric")
+    
+    if top_k > len(data):
+        warnings.warn("Warning: Note that since top_k is larger than the number of points in the dataframe, fewer than top_k indices will be returned.")
     
     # Call helper function to compute distances 
-    distances = get_all_distances(point, data, dist)
+    distances = get_all_distances(point, data, metric)
     
     # Sort distances in ascending order (smallest distances first) 
     # and return indices in that order
