@@ -20,6 +20,7 @@ df = pd.DataFrame([[1, 1], [1, 2], [1, 3]])
 k = 2
 
 
+#### Test Outputs
 def test_output_type():
     """
     Test that output is of type list
@@ -32,10 +33,13 @@ def test_output_size():
     Test that output has a length = k, or smaller if
     the size of input df is smaller than k
     """
-    if len(df) >= k:
-        assert(len(get_closest(point=x, data=df, top_k=k)) == k)
-    else:  # k is larger than size of input dataframe
-        assert(len(get_closest(point=x, data=df, top_k=k)) == len(df))
+    k_tests = [2,10]
+    
+    for k in k_tests:
+        if len(df) >= k:
+            assert(len(get_closest(point=x, data=df, top_k=k)) == k)
+        else:  # k is larger than size of input dataframe
+            assert(len(get_closest(point=x, data=df, top_k=k)) == len(df))
 
 
 def test_output_ints():
@@ -56,7 +60,7 @@ def test_output_positive():
 
     assert(all(x >= 0 for x in output))
 
-
+#### Test Inputs
 def test_input_data_type():
     """
     Test for error if data input is not a DataFrame
@@ -65,9 +69,17 @@ def test_input_data_type():
         get_closest(point=x, data=[1, 2, 3], top_k=k)
     except:
         assert True
-    else:
-        assert False
 
+
+def test_input_point_all_numeric():
+    """
+    Test for error if input 'point' contains items other than numerics
+    """
+    non_num = [1,"two"]
+    try:
+        get_closest(point=non_num, data=df, top_k=k)
+    except:
+        assert True
 
 def test_input_k_int():
     """
@@ -77,8 +89,6 @@ def test_input_k_int():
         get_closest(point=x, data=df, top_k=-2)
     except:
         assert True
-    else:
-        assert False
 
 
 def test_input_point_list():
@@ -89,27 +99,22 @@ def test_input_point_list():
         get_closest(point=1, data=df, top_k=k)
     except:
         assert True
-    else:
-        assert False
+
 
 def test_input_dist_string():
     """
     Test for error if metric is not a string
     """
     try:
-        get_closest(point=1, data=df, top_k=k, metric=2)
+        get_closest(x, data=df, top_k=k, metric=2)
     except:
         assert True
-    else:
-        assert False
 
 def test_input_dist_supported():
     """
     Test for error if metric is not a supported distance metric
     """
     try:
-        get_closest(point=1, data=df, top_k=k, metric="mahalanobis")
+        get_closest(x, data=df, top_k=k, metric="mahalanobis")
     except:
         assert True
-    else:
-        assert False
