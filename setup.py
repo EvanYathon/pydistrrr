@@ -6,4 +6,4 @@ setup(name='pydistrrr',
       author='Shayne Andrews, Carrie Cheung, Evan Yathon, Mike Yuan',
       url='https://github.com/UBC-MDS/pydistrrr',
       packages=['pydistrrr']
-     )
+      )

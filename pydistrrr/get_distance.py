@@ -36,7 +36,6 @@ def get_cosine(point1, point2):
     bmag = bmag**(1 / 2)
 
     return dp / (amag * bmag)
-    # return distance.cosine(point1, point2)
 
 
 def get_manhattan(point1, point2):
