@@ -9,7 +9,7 @@ Implementation of get_all_distances function in the pydistrrr package.
 from pydistrrr.get_distance import get_distance
 import pandas as pd
 
-def get_all_distances(point, data, dist = "euclidean"):
+def get_all_distances(point, data, metric = "euclidean"):
     """
     Return distance metric for each row in a dataframe as compared to an input list
 
@@ -17,13 +17,13 @@ def get_all_distances(point, data, dist = "euclidean"):
 
     Parameters
     ----------
-    data : pandas dataframe
-    dataframe of size n by k to compare to point
-
     point: list
     list of length k to compare to data
 
-    dist: string
+    data : pandas dataframe
+    dataframe of size n by k to compare to point
+
+    metric: string
     string indicating type of distance metric
 
     Returns
@@ -35,7 +35,7 @@ def get_all_distances(point, data, dist = "euclidean"):
     -------
     df = pd.DataFrame({"A" : [1,2,3], "B" : [8,2,4]})
     point = [-2,4]
-    get_all_distances(point, df, dist = "euclidean")
+    get_all_distances(point, df, metric = "euclidean")
     >>> [5, 4.47, 5]
     """
 
@@ -55,9 +55,9 @@ def get_all_distances(point, data, dist = "euclidean"):
     if len(point) != k:
         raise Exception("point vector length and number of columns in data should match")
 
-    # raise error if dist isn't correctly defined
-    if not dist in ["euclidean","cosine","manhattan"]:
-        raise Exception("dist should be one of 'euclidean','cosine' or 'manhattan'")
+    # raise error if metric isn't correctly defined
+    if not metric in ["euclidean","cosine","manhattan"]:
+        raise Exception("metric should be one of 'euclidean','cosine' or 'manhattan'")
 
     # empty vector to be filled with distances
     distances = []
