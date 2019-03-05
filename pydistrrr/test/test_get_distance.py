@@ -74,7 +74,7 @@ def test_unequal_length_in_list():
     """
     Test if assertion error will be thrown if the lists have different length
     """
-    with pytest.raises(AssertionError, match=r'.*unequal length.*'):
+    with pytest.raises(ValueError, match=r'.*unequal length.*'):
         get_distance(point1, point3)
         #get_distance(point3, point1)
 
