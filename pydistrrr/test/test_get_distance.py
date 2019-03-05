@@ -9,6 +9,7 @@ import pytest
 import numpy as np
 from scipy.spatial import distance
 from pydistrrr.get_distance import get_distance
+from typing import List
 
 # dummy input
 point1 = [1, 1]
@@ -16,7 +17,7 @@ point2 = [1, 2]
 point3 = [1, 2, 3, 4, 5]
 point4 = [5, 4, 3, 2, 1]
 
-empty_point = []
+empty_point: List[int] = []
 bad_point = ["2", "hello"]
 
 # helper function
