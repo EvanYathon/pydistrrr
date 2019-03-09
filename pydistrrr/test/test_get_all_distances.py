@@ -92,9 +92,18 @@ def test_point_correct_length():
 
 def test_metric_input():
     """
-    dist should be a string and one of 'cosine', 'euclidean' or 'manhattan'
+    metric should be a string and one of 'cosine', 'euclidean' or 'manhattan'
     """
     try:
         get_all_distances(ref_vec,df, metric = "cityblock")
+    except:
+        assert True
+
+def test_point_types():
+    """
+    Test for error if input 'point' contains items other than numerics
+    """
+    try:
+        get_all_distances(["a","b","c"],df)
     except:
         assert True

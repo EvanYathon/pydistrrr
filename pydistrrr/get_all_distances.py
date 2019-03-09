@@ -29,7 +29,7 @@ def get_all_distances(point, data, metric = "euclidean"):
     Returns
     -------
     list
-    numeric vector of length n containing distances for each row of data
+    numeric list of length n containing distances for each row of data
 
     Example
     -------
@@ -46,6 +46,11 @@ def get_all_distances(point, data, metric = "euclidean"):
     # raise error if first argument isn't a list
     if not isinstance(point, list):
         raise Exception("the point argument should be type list")
+
+    # raise error if point isn't all numeric
+    for obs in point:
+        if not isinstance(obs, int) and not isinstance(obs, float):
+            raise Exception("point argument should be a list containing only type float or int")
 
     # number of observations in data frame
     n = data.shape[0]
