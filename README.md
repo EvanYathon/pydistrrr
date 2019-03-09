@@ -1,5 +1,7 @@
 # Pydistrrr
 
+[![Build Status](https://travis-ci.org/UBC-MDS/pydistrrr.svg?branch=master)](https://travis-ci.org/UBC-MDS/pydistrrr)
+
 |Contributors|GitHub Handle|
 |------------|-------------|
 |Carrie Cheung| [carrieklc](https://github.com/carrieklc)|
@@ -19,7 +21,7 @@ In addition to computing distances, `pydistrrr` can identify the closest data po
 ## Test Coverage
 We used the Python framework [`pytest`](https://docs.pytest.org/en/latest/) and the plug-in [`pytest-cov`](https://pypi.org/project/pytest-cov/) to test and track test coverage for the `pydistrrr` package. The results of the coverage report can be seen below.
 
-![](reports/pydistrrr_test_coverage.png)
+![](reports/pydistrrr_test_coverage2.png)
 
 ## Functions
 
