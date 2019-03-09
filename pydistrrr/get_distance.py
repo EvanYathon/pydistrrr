@@ -116,7 +116,7 @@ def get_distance(point1, point2, metric="euclidean", testing=None):
 
     # check for unequal length
     if(len(point1) != len(point2)):
-        raise AssertionError("points cannot have unequal length")
+        raise ValueError("points cannot have unequal length")
 
     # check for incorrect metric input
     if (metric not in DISTANCE_FUNCTIONS):

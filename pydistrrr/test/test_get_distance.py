@@ -9,6 +9,7 @@ import pytest
 import numpy as np
 from scipy.spatial import distance
 from pydistrrr.get_distance import get_distance
+from typing import List
 
 # dummy input
 point1 = [1, 1]
@@ -16,7 +17,7 @@ point2 = [1, 2]
 point3 = [1, 2, 3, 4, 5]
 point4 = [5, 4, 3, 2, 1]
 
-empty_point = []
+empty_point: List[int] = []
 bad_point = ["2", "hello"]
 
 # helper function
@@ -73,9 +74,8 @@ def test_unequal_length_in_list():
     """
     Test if assertion error will be thrown if the lists have different length
     """
-    with pytest.raises(AssertionError, match=r'.*unequal length.*'):
+    with pytest.raises(ValueError, match=r'.*unequal length.*'):
         get_distance(point1, point3)
-        #get_distance(point3, point1)
 
 
 def test_non_numeric_element_input():
