@@ -1,5 +1,7 @@
 # Pydistrrr
 
+[![Build Status](https://travis-ci.org/UBC-MDS/pydistrrr.svg?branch=master)](https://travis-ci.org/UBC-MDS/pydistrrr)
+
 |Contributors|GitHub Handle|
 |------------|-------------|
 |Carrie Cheung| [carrieklc](https://github.com/carrieklc)|
@@ -15,6 +17,11 @@
 * [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity)
 
 In addition to computing distances, `pydistrrr` can identify the closest data points to a given point based on a distance threshold, or based on a user-specified number of points.  These functions are designed to be similar to [Scikit Learn's Nearest Neighbors](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors.kneighbors) functionality.
+
+## Test Coverage
+We used the Python framework [`pytest`](https://docs.pytest.org/en/latest/) and the plug-in [`pytest-cov`](https://pypi.org/project/pytest-cov/) to test and track test coverage for the `pydistrrr` package. The results of the coverage report can be seen below.
+
+![](reports/pydistrrr_test_coverage2.png)
 
 ## Functions
 

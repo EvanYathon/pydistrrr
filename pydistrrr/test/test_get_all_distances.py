@@ -71,8 +71,6 @@ def test_second_arg_df():
         get_all_distances(ref_vec,[1,2,3])
     except:
         assert True
-    else:
-        assert False
 
 def test_second_arg_list():
     """
@@ -82,8 +80,6 @@ def test_second_arg_list():
         get_all_distances(df, df)
     except:
         assert True
-    else:
-        assert False
 
 def test_point_correct_length():
     """
@@ -93,8 +89,6 @@ def test_point_correct_length():
         get_all_distances([1,2,3,4],df)
     except:
         assert True
-    else:
-        assert False
 
 def test_metric_input():
     """
@@ -121,5 +115,3 @@ def test_df_types():
         get_all_distances(ref_vec,df2)
     except:
         assert True
-    else:
-        assert False

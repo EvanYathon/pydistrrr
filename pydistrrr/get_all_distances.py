@@ -19,7 +19,7 @@ def get_all_distances(point, data, metric = "euclidean"):
     Parameters
     ----------
     point: list
-    list of length k to compare to data, containing only int or float types
+    list of length k to compare to data
 
     data : pandas dataframe
     dataframe of size n by k to compare to point
@@ -75,6 +75,6 @@ def get_all_distances(point, data, metric = "euclidean"):
     distances = []
 
     for obs in range(0,n):
-        distances.append(get_distance(point, data.iloc[obs,], metric = dist))
+        distances.append(get_distance(point, data.iloc[obs,], metric = metric))
 
     return distances

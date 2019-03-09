@@ -49,23 +49,23 @@ def get_closest(point, data, top_k, metric="euclidean"):
     """
     # Check inputs are valid and as expected
     if not isinstance(data, pd.DataFrame):
-        raise Exception("The data argument should be a pandas dataframe")
+        raise TypeError("The data argument should be a pandas dataframe")
     
     if not isinstance(metric, str):
-        raise Exception("The 'metric' argument should be a string")
+        raise TypeError("The 'metric' argument should be a string")
     
     if top_k < 0 or not isinstance(top_k, int):
-        raise Exception("The top_k argument should be a non-negative integer")
+        raise ValueError("The top_k argument should be a non-negative integer")
 
     if not isinstance(point, list):
-        raise Exception("The point argument should be a list")
+        raise TypeError("The point argument should be a list")
         
     if not all((isinstance(x, int)|isinstance(x, float)) for x in point):
-        raise Exception("The point argument should contain only numerics")
+        raise ValueError("The point argument should contain only numerics")
         
     supported_dist = ["euclidean", "cosine", "manhattan"]
     if metric not in supported_dist:
-        raise Exception("The 'metric' argument is not a supported distance metric")
+        raise ValueError("The 'metric' argument is not a supported distance metric")
     
     if top_k > len(data):
         warnings.warn("Warning: Note that since top_k is larger than the number of points in the dataframe, fewer than top_k indices will be returned.")
