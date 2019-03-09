@@ -67,7 +67,7 @@ def test_input_data_type():
     """
     try:
         get_closest(point=x, data=[1, 2, 3], top_k=k)
-    except:
+    except TypeError:
         assert True
 
 
@@ -78,7 +78,7 @@ def test_input_point_all_numeric():
     non_num = [1,"two"]
     try:
         get_closest(point=non_num, data=df, top_k=k)
-    except:
+    except ValueError:
         assert True
 
 def test_input_k_int():
@@ -87,7 +87,7 @@ def test_input_k_int():
     """
     try:
         get_closest(point=x, data=df, top_k=-2)
-    except:
+    except ValueError:
         assert True
 
 
@@ -97,7 +97,7 @@ def test_input_point_list():
     """
     try:
         get_closest(point=1, data=df, top_k=k)
-    except:
+    except TypeError:
         assert True
 
 
@@ -107,7 +107,7 @@ def test_input_dist_string():
     """
     try:
         get_closest(x, data=df, top_k=k, metric=2)
-    except:
+    except TypeError:
         assert True
 
 def test_input_dist_supported():
@@ -116,5 +116,5 @@ def test_input_dist_supported():
     """
     try:
         get_closest(x, data=df, top_k=k, metric="mahalanobis")
-    except:
+    except ValueError:
         assert True
