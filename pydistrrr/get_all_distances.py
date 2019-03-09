@@ -53,12 +53,6 @@ def get_all_distances(point, data, metric = "euclidean"):
         if not isinstance(obs, int) and not isinstance(obs, float):
             raise Exception("point argument should be a list containing only type float or int")
 
-    #raise error if df isn't all numeric
-    for row in range(0,n):
-        for col in range(0,k):
-            if not isinstance(df.iloc[row,col],(int,np.integer)) and not isinstance(df.iloc[row,col],float):
-                raise Exception("data argument should be a pandas dataframe containing only floats or integers")
-
     # number of observations in data frame
     n = data.shape[0]
     k = data.shape[1]

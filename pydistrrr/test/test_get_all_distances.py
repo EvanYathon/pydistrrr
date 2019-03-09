@@ -98,20 +98,12 @@ def test_metric_input():
         get_all_distances(ref_vec,df, metric = "cityblock")
     except:
         assert True
-    else:
-        assert False
 
 def test_point_types():
+    """
+    Test for error if input 'point' contains items other than numerics
+    """
     try:
         get_all_distances(["a","b","c"],df)
-    except:
-        assert True
-    else:
-        assert False
-
-def test_df_types():
-    df2 = pd.DataFrame({"A" : ["1","2","3"], "B" : [8,2,4]})
-    try:
-        get_all_distances(ref_vec,df2)
     except:
         assert True
