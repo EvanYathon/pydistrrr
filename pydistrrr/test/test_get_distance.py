@@ -76,7 +76,6 @@ def test_unequal_length_in_list():
     """
     with pytest.raises(ValueError, match=r'.*unequal length.*'):
         get_distance(point1, point3)
-        #get_distance(point3, point1)
 
 
 def test_non_numeric_element_input():
