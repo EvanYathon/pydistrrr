@@ -8,7 +8,6 @@ Implementation of get_all_distances function in the pydistrrr package.
 # import pandas and get_all_distances
 from pydistrrr.get_distance import get_distance
 import pandas as pd
-import numpy as np
 
 def get_all_distances(point, data, metric = "euclidean"):
     """
